@@ -39,6 +39,29 @@ class BST {
             }
         }
     }
+
+    find (value) {
+        if (!value || !this.root) {
+            return undefined;
+        }
+
+        let current = this.root;
+
+        let found = false;
+
+        while (!found && current) {
+            if (value === current.value) {
+                found = true;
+            }
+
+            if (value < current.value) {
+                current = current.left;
+            } else if (value > current.value) {
+                current = current.right;
+            }
+        }
+        return found;
+    }
 }
 
 let tree = new BST();
