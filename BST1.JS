@@ -79,16 +79,38 @@ class BST {
             }
         } return result;
     }
+
+    dfsPreOrder() {
+        let result = [];
+        function traverse(currentNode) {
+            result.push(currentNode.value);
+            if(currentNode.left) traverse(currentNode.left);
+            if(currentNode.right) traverse(currentNode.right);
+        } 
+        traverse(this.root);
+        return result;
+    }   
+
+    dfsInOrder() {
+        let result = [];
+        function traverse(currentNode) {
+            if(currentNode.left) traverse(currentNode.left);
+            result.push(currentNode.value);
+            if(currentNode.right) traverse(currentNode.right);
+        } 
+        traverse(this.root);
+        return result;
+    }   
 }
 
 let tree = new BST();
 
-tree.insert(10);
-tree.insert(21);
-tree.insert(32);
-tree.insert(47);
-tree.insert(56);
+tree.insert(1);
+tree.insert(3);
+tree.insert(5);
+tree.insert(2);
+tree.insert(4);
 
-console.log(tree.bfs());
+console.log(tree.dfsInOrder());
 
-console.log(tree);
+
